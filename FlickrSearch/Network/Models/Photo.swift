@@ -1,4 +1,4 @@
-struct SearchItem: Decodable {
+struct Photo: Decodable {
     let id: String
     let owner: String
     let secret: String

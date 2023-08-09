@@ -1,3 +1,3 @@
 struct SearchResult: Decodable {
-    var items: [SearchItem]
+    var photos: Photos
 }
