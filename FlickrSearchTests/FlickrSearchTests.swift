@@ -1,10 +1,3 @@
-//
-//  FlickrSearchTests.swift
-//  FlickrSearchTests
-//
-//  Created by Timur Rakov on 09.08.2023.
-//
-
 import XCTest
 @testable import FlickrSearch
 

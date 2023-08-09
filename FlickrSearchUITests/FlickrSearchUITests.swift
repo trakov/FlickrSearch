@@ -1,10 +1,3 @@
-//
-//  FlickrSearchUITests.swift
-//  FlickrSearchUITests
-//
-//  Created by Timur Rakov on 09.08.2023.
-//
-
 import XCTest
 
 final class FlickrSearchUITests: XCTestCase {

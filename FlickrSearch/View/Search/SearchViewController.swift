@@ -1,14 +1,9 @@
-//
-//  ViewController.swift
-//  FlickrSearch
-//
-//  Created by Timur Rakov on 09.08.2023.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+class SearchViewController: UIViewController {
 
+    @IBOutlet private weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
