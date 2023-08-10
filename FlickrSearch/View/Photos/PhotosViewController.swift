@@ -13,6 +13,9 @@ class PhotosViewController: UIViewController {
             preconditionFailure("Can't find SearchViewController")
         }
         vc.searchTermsStorage = searchTermsStorage
+        vc.didSelectTerm = { [weak self] term in
+            self?.search(text: term)
+        }
         return vc
     }()
     
@@ -68,15 +71,7 @@ extension PhotosViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.isEmpty else { return }
-        // show loader
-        collectionView.scrollToTop()
-        searchTermsStorage.add(term: text)
-        searchController.hide()
-        self.photosProvider.search(with: text) { [weak self] success in
-            // hide loader
-            self?.collectionView.reloadData()
-        }
+        search(text: searchBar.text)
     }
 }
 
@@ -88,5 +83,17 @@ private extension PhotosViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         definesPresentationContext = true
+    }
+    
+    func search(text: String?) {
+        guard let text = text, !text.isEmpty else { return }
+        // show loader
+        collectionView.scrollToTop()
+        searchTermsStorage.add(term: text)
+        searchController.hide()
+        self.photosProvider.search(with: text) { [weak self] success in
+            // hide loader
+            self?.collectionView.reloadData()
+        }
     }
 }

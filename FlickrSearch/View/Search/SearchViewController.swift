@@ -3,7 +3,8 @@ import UIKit
 final class SearchViewController: UITableViewController {
     
     var searchTermsStorage: SearchTermsStoragable?
-
+    var didSelectTerm: ((String?) -> Void)?
+    
     func reloadData() {
         tableView.reloadData()
     }
@@ -16,5 +17,9 @@ final class SearchViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         searchTermsStorage?.terms.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        didSelectTerm?(searchTermsStorage?.terms[indexPath.row])
     }
 }
