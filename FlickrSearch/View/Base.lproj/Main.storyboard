@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="FT7-J6-VL5">
+            <objects>
+                <navigationController id="cwF-2j-JDq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ahD-R9-ppk">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5ao-13-aem"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t3L-NV-dOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-647" y="-2"/>
+        </scene>
         <!--Photos View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -39,7 +55,6 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                             <constraints>
                                                 <constraint firstItem="IcV-Gm-uUe" firstAttribute="leading" secondItem="zpo-sO-3lf" secondAttribute="leading" id="OPL-2P-Pw2"/>
                                                 <constraint firstAttribute="trailing" secondItem="IcV-Gm-uUe" secondAttribute="trailing" id="Vjp-3U-YqY"/>
@@ -54,6 +69,7 @@
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="6x1-yg-AZl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KMo-eN-LhK"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -74,22 +90,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="-2"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FT7-J6-VL5">
-            <objects>
-                <navigationController id="cwF-2j-JDq" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ahD-R9-ppk">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5ao-13-aem"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t3L-NV-dOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-647" y="-2"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="r9b-Cm-niz">
@@ -132,9 +132,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

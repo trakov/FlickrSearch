@@ -4,6 +4,7 @@ class PhotosViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private let photosProvider: PhotosProviding = PhotosProvider()
+    private let searchTermsStorage: SearchTermsStoragable = SearchTermsStorage()
     
     private lazy var searchViewController: SearchViewController = {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(
@@ -11,6 +12,7 @@ class PhotosViewController: UIViewController {
         ) as? SearchViewController else {
             preconditionFailure("Can't find SearchViewController")
         }
+        vc.searchTermsStorage = searchTermsStorage
         return vc
     }()
     
@@ -21,6 +23,7 @@ class PhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSearchController()
+        collectionView.collectionViewLayout = GridFlowLayout()
     }
 }
 
@@ -36,29 +39,42 @@ extension PhotosViewController: UICollectionViewDataSource {
             preconditionFailure()
         }
         cell.photo = photosProvider.photos[indexPath.item]
-        
         return cell
     }
 }
 
-extension PhotosViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
+extension PhotosViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == collectionView.numberOfItems(inSection: 0) - 2 {
+            photosProvider.loadMore { [weak self] photos in
+                let n = collectionView.numberOfItems(inSection: 0)
+                let indexPaths = photos.enumerated().map {
+                    IndexPath(item: n + $0.offset, section: 0)
+                }
+                self?.collectionView.insertItems(at: indexPaths)
+            }
+        }
     }
+}
+
+extension PhotosViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {}
 }
 
 extension PhotosViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        showSearch()
+        searchViewController.reloadData()
+        searchController.show()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else { return }
         // show loader
-        searchViewController.results.append(text)
+        collectionView.scrollToTop()
+        searchTermsStorage.add(term: text)
+        searchController.hide()
         self.photosProvider.search(with: text) { [weak self] success in
             // hide loader
-            self?.hideSearch()
             self?.collectionView.reloadData()
         }
     }
@@ -72,21 +88,5 @@ private extension PhotosViewController {
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         definesPresentationContext = true
-    }
-    
-    func hideSearch() {
-        if #available(iOS 13.0, *) {
-            searchController.showsSearchResultsController = false
-        } else {
-            searchController.view.isHidden = true
-        }
-    }
-    
-    func showSearch() {
-        if #available(iOS 13.0, *) {
-            searchController.showsSearchResultsController = true
-        } else {
-            searchController.view.isHidden = false
-        }
     }
 }

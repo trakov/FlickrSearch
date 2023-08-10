@@ -6,7 +6,7 @@ private extension SearchEndpoint {
 }
 
 enum SearchEndpoint {
-    case search(text: String)
+    case search(text: String, page: Int)
 }
 
 extension SearchEndpoint: Endpoint {
@@ -27,14 +27,16 @@ extension SearchEndpoint: Endpoint {
     
     var task: HTTPTask {
         switch self {
-        case .search(let text):
+        case .search(let text, let page):
             return .requestParameters(
                 bodyEncoding: .url(parameters: [
                     "method": "flickr.photos.search",
                     "api_key": Constants.apiKey,
                     "format": "json",
                     "nojsoncallback": 1,
-                    "text": text
+                    "text": text,
+                    "per_page": 10,
+                    "page": page
                 ])
             )
         }

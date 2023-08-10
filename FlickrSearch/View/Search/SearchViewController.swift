@@ -2,20 +2,19 @@ import UIKit
 
 final class SearchViewController: UITableViewController {
     
-    @UserDefaultsBacked(defaultValue: [], key: "results")
-    var results: [String] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var searchTermsStorage: SearchTermsStoragable?
 
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableCell", for: indexPath)
-        cell.textLabel?.text = results[indexPath.row]
+        cell.textLabel?.text = searchTermsStorage?.terms[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        results.count
+        searchTermsStorage?.terms.count ?? 0
     }
 }

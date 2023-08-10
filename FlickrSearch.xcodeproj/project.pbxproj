@@ -35,6 +35,11 @@
 		8FCC13722A8391C700698582 /* SearchItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13712A8391C700698582 /* SearchItemsProvider.swift */; };
 		8FCC13742A8396FD00698582 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13732A8396FD00698582 /* Photos.swift */; };
 		8FCC13782A83AF1100698582 /* UserDefaultsBacked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13772A83AF1100698582 /* UserDefaultsBacked.swift */; };
+		8FCC137E2A83C69200698582 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8FCC137D2A83C69200698582 /* SDWebImage */; };
+		8FCC13802A83CA8400698582 /* GridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC137F2A83CA8400698582 /* GridFlowLayout.swift */; };
+		8FCC13822A83CF1700698582 /* SearchTermsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13812A83CF1700698582 /* SearchTermsStorage.swift */; };
+		8FCC13852A83D1EE00698582 /* UISearchController+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13842A83D1EE00698582 /* UISearchController+Exts.swift */; };
+		8FCC13872A83D35400698582 /* UICollectionView+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13862A83D35400698582 /* UICollectionView+Exts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +92,10 @@
 		8FCC13712A8391C700698582 /* SearchItemsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemsProvider.swift; sourceTree = "<group>"; };
 		8FCC13732A8396FD00698582 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		8FCC13772A83AF1100698582 /* UserDefaultsBacked.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsBacked.swift; sourceTree = "<group>"; };
+		8FCC137F2A83CA8400698582 /* GridFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridFlowLayout.swift; sourceTree = "<group>"; };
+		8FCC13812A83CF1700698582 /* SearchTermsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermsStorage.swift; sourceTree = "<group>"; };
+		8FCC13842A83D1EE00698582 /* UISearchController+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchController+Exts.swift"; sourceTree = "<group>"; };
+		8FCC13862A83D35400698582 /* UICollectionView+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Exts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCC137E2A83C69200698582 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +147,7 @@
 		8FCC13162A837B2800698582 /* FlickrSearch */ = {
 			isa = PBXGroup;
 			children = (
+				8FCC13832A83D1C300698582 /* Extensions */,
 				8FCC13762A83AEFE00698582 /* Helpers */,
 				8FCC134A2A83819900698582 /* Network */,
 				8FCC13492A83817B00698582 /* Services */,
@@ -171,6 +182,7 @@
 			children = (
 				8FCC131B2A837B2800698582 /* PhotosViewController.swift */,
 				8FCC136D2A838DAF00698582 /* PhotoCell.swift */,
+				8FCC137F2A83CA8400698582 /* GridFlowLayout.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -189,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				8FCC13712A8391C700698582 /* SearchItemsProvider.swift */,
+				8FCC13812A83CF1700698582 /* SearchTermsStorage.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -264,6 +277,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		8FCC13832A83D1C300698582 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8FCC13842A83D1EE00698582 /* UISearchController+Exts.swift */,
+				8FCC13862A83D35400698582 /* UICollectionView+Exts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,6 +302,9 @@
 			dependencies = (
 			);
 			name = FlickrSearch;
+			packageProductDependencies = (
+				8FCC137D2A83C69200698582 /* SDWebImage */,
+			);
 			productName = FlickrSearch;
 			productReference = 8FCC13142A837B2800698582 /* FlickrSearch.app */;
 			productType = "com.apple.product-type.application";
@@ -352,6 +377,9 @@
 				Base,
 			);
 			mainGroup = 8FCC130B2A837B2800698582;
+			packageReferences = (
+				8FCC137C2A83C69200698582 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 8FCC13152A837B2800698582 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -399,12 +427,15 @@
 				8FCC13632A8381D700698582 /* ParameterEncoding.swift in Sources */,
 				8FCC13612A8381D700698582 /* EmptyModel.swift in Sources */,
 				8FCC135E2A8381D700698582 /* Photo.swift in Sources */,
+				8FCC13872A83D35400698582 /* UICollectionView+Exts.swift in Sources */,
 				8FCC13692A8381D700698582 /* Endpoint.swift in Sources */,
 				8FCC131C2A837B2800698582 /* PhotosViewController.swift in Sources */,
 				8FCC13742A8396FD00698582 /* Photos.swift in Sources */,
 				8FCC13672A8381D700698582 /* JSONParameterEncoder.swift in Sources */,
 				8FCC135D2A8381D700698582 /* SearchResult.swift in Sources */,
+				8FCC13822A83CF1700698582 /* SearchTermsStorage.swift in Sources */,
 				8FCC13702A838EDB00698582 /* ImageURLBuilder.swift in Sources */,
+				8FCC13852A83D1EE00698582 /* UISearchController+Exts.swift in Sources */,
 				8FCC136A2A8381D700698582 /* FormDataParameterEncoder.swift in Sources */,
 				8FCC13652A8381D700698582 /* RequestMethod.swift in Sources */,
 				8FCC13722A8391C700698582 /* SearchItemsProvider.swift in Sources */,
@@ -417,6 +448,7 @@
 				8FCC13602A8381D700698582 /* SearchService.swift in Sources */,
 				8FCC13782A83AF1100698582 /* UserDefaultsBacked.swift in Sources */,
 				8FCC13182A837B2800698582 /* AppDelegate.swift in Sources */,
+				8FCC13802A83CA8400698582 /* GridFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,6 +798,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8FCC137C2A83C69200698582 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.17.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8FCC137D2A83C69200698582 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FCC137C2A83C69200698582 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8FCC130C2A837B2800698582 /* Project object */;
 }
