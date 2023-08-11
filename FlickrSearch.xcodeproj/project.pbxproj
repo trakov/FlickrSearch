@@ -38,6 +38,11 @@
 		8FCC13852A83D1EE00698582 /* UISearchController+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13842A83D1EE00698582 /* UISearchController+Exts.swift */; };
 		8FCC13872A83D35400698582 /* UICollectionView+Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13862A83D35400698582 /* UICollectionView+Exts.swift */; };
 		8FCC138F2A852AA400698582 /* FlickrSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC138E2A852AA400698582 /* FlickrSearchTests.swift */; };
+		8FCC13992A8630AD00698582 /* SearchTermsStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13982A8630AD00698582 /* SearchTermsStorageTests.swift */; };
+		8FCC139B2A8630C300698582 /* MockSearchTermsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC139A2A8630C300698582 /* MockSearchTermsStorage.swift */; };
+		8FCC139E2A86317000698582 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 8FCC139D2A86317000698582 /* SDWebImage */; };
+		8FCC13A02A86330A00698582 /* ImageURLBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC139F2A86330A00698582 /* ImageURLBuilderTests.swift */; };
+		8FCC13A22A86346000698582 /* MockImageURLBuildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC13A12A86346000698582 /* MockImageURLBuildable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,10 @@
 		8FCC13862A83D35400698582 /* UICollectionView+Exts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Exts.swift"; sourceTree = "<group>"; };
 		8FCC138C2A852AA400698582 /* FlickrSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FCC138E2A852AA400698582 /* FlickrSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrSearchTests.swift; sourceTree = "<group>"; };
+		8FCC13982A8630AD00698582 /* SearchTermsStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTermsStorageTests.swift; sourceTree = "<group>"; };
+		8FCC139A2A8630C300698582 /* MockSearchTermsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchTermsStorage.swift; sourceTree = "<group>"; };
+		8FCC139F2A86330A00698582 /* ImageURLBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLBuilderTests.swift; sourceTree = "<group>"; };
+		8FCC13A12A86346000698582 /* MockImageURLBuildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageURLBuildable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCC139E2A86317000698582 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +121,7 @@
 				8FCC13162A837B2800698582 /* FlickrSearch */,
 				8FCC138D2A852AA400698582 /* FlickrSearchTests */,
 				8FCC13152A837B2800698582 /* Products */,
+				8FCC139C2A86317000698582 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -251,9 +262,28 @@
 		8FCC138D2A852AA400698582 /* FlickrSearchTests */ = {
 			isa = PBXGroup;
 			children = (
+				8FCC13972A86308E00698582 /* Services */,
 				8FCC138E2A852AA400698582 /* FlickrSearchTests.swift */,
 			);
 			path = FlickrSearchTests;
+			sourceTree = "<group>";
+		};
+		8FCC13972A86308E00698582 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8FCC13982A8630AD00698582 /* SearchTermsStorageTests.swift */,
+				8FCC139A2A8630C300698582 /* MockSearchTermsStorage.swift */,
+				8FCC139F2A86330A00698582 /* ImageURLBuilderTests.swift */,
+				8FCC13A12A86346000698582 /* MockImageURLBuildable.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8FCC139C2A86317000698582 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +323,9 @@
 				8FCC13912A852AA400698582 /* PBXTargetDependency */,
 			);
 			name = FlickrSearchTests;
+			packageProductDependencies = (
+				8FCC139D2A86317000698582 /* SDWebImage */,
+			);
 			productName = FlickrSearchTests;
 			productReference = 8FCC138C2A852AA400698582 /* FlickrSearchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -397,6 +430,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FCC138F2A852AA400698582 /* FlickrSearchTests.swift in Sources */,
+				8FCC13A22A86346000698582 /* MockImageURLBuildable.swift in Sources */,
+				8FCC13A02A86330A00698582 /* ImageURLBuilderTests.swift in Sources */,
+				8FCC139B2A8630C300698582 /* MockSearchTermsStorage.swift in Sources */,
+				8FCC13992A8630AD00698582 /* SearchTermsStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +726,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		8FCC137D2A83C69200698582 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FCC137C2A83C69200698582 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		8FCC139D2A86317000698582 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8FCC137C2A83C69200698582 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
